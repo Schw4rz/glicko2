@@ -4,7 +4,7 @@
 \alias{GetSigmaNew}
 \title{Get the updated value of sigma: sigma.new.}
 \usage{
-GetSigmaNew(sigma, phi, Delta, nu, tau)
+GetSigmaNew(sigma, phi, Delta, nu, tau, epsilon)
 }
 \arguments{
 \item{sigma}{[\code{numeric(1)}]\cr
@@ -22,6 +22,9 @@ A numeric value of the quantity nu.}
 
 \item{tau}{[\code{numeric(1)}]\cr
 A numeric value of the system constant tau.}
+
+\item{epsilon}{[\code{numeric(1)}]\cr
+A parameter used to measure convergance of the algorithm.}
 }
 \value{
 [\code{numeric(1)}] the updated value of \code{sigma}.

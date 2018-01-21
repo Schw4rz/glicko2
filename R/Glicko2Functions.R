@@ -1,11 +1,3 @@
-## step 1
-# defaults for player/team variables (r, RD, sigma)
-kr <- 1500  # default player rating
-kRD <- 350  # default rating deviation
-ksigma <- 0.06  # default volatility
-ktau <- 0.5  # system constant for volatility
-kepsilon <- 1e-6  # only for optimization
-
 ## step 2
 #' Convert rating r to mu on Glicko-2 scale.
 #'
@@ -112,8 +104,10 @@ GetFxHelper <- function(x, sigma, phi, Delta, nu, tau) {
 #'   A numeric value of the quantity nu.
 #' @param tau [\code{numeric(1)}]\cr
 #'   A numeric value of the system constant tau.
+#' @param epsilon [\code{numeric(1)}]\cr
+#'   A parameter used to measure convergance of the algorithm.
 #' @return [\code{numeric(1)}] the updated value of \code{sigma}.
-GetSigmaNew <- function(sigma, phi, Delta, nu, tau) {
+GetSigmaNew <- function(sigma, phi, Delta, nu, tau, epsilon) {
   # 2
   A <- a <- log(sigma^2)
   if (Delta^2 > (phi^2 + nu)) {
@@ -130,7 +124,7 @@ GetSigmaNew <- function(sigma, phi, Delta, nu, tau) {
   fA <- GetFxHelper(A, sigma, phi, Delta, nu, tau)
   fB <- GetFxHelper(B, sigma, phi, Delta, nu, tau)
   # 4
-  while (abs(B - A) > kepsilon) {
+  while (abs(B - A) > epsilon) {
     # print(abs(B - A))
     # a
     C <- A + (A - B) * fA / (fB - fA)
@@ -270,7 +264,7 @@ GetGlicko2Rating <- function(r = 1500, RD = 350, sigma = 0.06,
     Delta <- GetDelta(nu, E.op, g.op, s.op)
 
     # updates
-    sigma.new <- GetSigmaNew(sigma, phi, Delta, nu, tau)
+    sigma.new <- GetSigmaNew(sigma, phi, Delta, nu, tau, epsilon)
     phi.pre <- GetPhiPre(phi, sigma.new)
     phi.new <- GetPhiNew(phi.pre, sigma.new, nu)
     mu.new <- GetMuNew(mu, phi.new, nu, Delta)
@@ -280,8 +274,7 @@ GetGlicko2Rating <- function(r = 1500, RD = 350, sigma = 0.06,
     RD.new <- GetRDNew(phi.new)
 
     # result
-    result <- list(r = r, RD = RD, sigma = sigma,
-                   r.new = r.new, RD.new = RD.new, sigma.new = sigma.new)
+    result <- list(r.new = r.new, RD.new = RD.new, sigma.new = sigma.new)
 
   } else {
     phi.new <- sqrt(phi^2 + sigma^2)
