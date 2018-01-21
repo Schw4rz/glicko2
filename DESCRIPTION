@@ -1,0 +1,13 @@
+Package: glicko2
+Title: Glicko-2 Ratings for R
+Version: 0.1-1337
+Authors@R: person("Sebastian", "Schwarz", email = "sebastian@schw4rz.de", role = c("aut", "cre"))
+Description: Pure R Implementation of the Glicko-2 rating algorithm.
+Depends:
+    R (>= 3.4.3),
+    data.table (>= 1.10.4-3)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: yes
+RoxygenNote: 6.0.1
