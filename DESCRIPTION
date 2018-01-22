@@ -11,3 +11,8 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: yes
 RoxygenNote: 6.0.1
+Suggests: 
+    testthat,
+    covr
+URL: https://github.com/schw4rz/glicko2
+BugReports: https://github.com/schw4rz/glicko2/issues
