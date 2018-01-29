@@ -13,9 +13,9 @@ devtools::install_github("schw4rz/glicko2")
 Update ratings for all players with `strengths` and `matches` stored in `data.table` objects created using the `InitializeMatches` and `InitializeStrengths` functions (example from Mark Glickman's suggested implementation [paper](http://www.glicko.net/glicko/glicko2.pdf)).
 
 ```R
-# generate data
 library(glicko2)
 
+# generate data
 matches <- InitializeMatches(player = c("A", "A", "A"),
                              opponent = c("B", "C", "D"),
                              is_winner = c(1, 0, 0),
