@@ -128,7 +128,7 @@ InitializeStrengths <- function(player, period = NULL, r = NULL, RD = NULL,
                                         period = period,
                                         r = r,
                                         RD = RD,
-                                        sugma = sigma)
+                                        sigma = sigma)
 
   } else {
     # no strengths known -> initialize only
