@@ -31,7 +31,7 @@ strengths <- InitializeStrengths(player = c("A", "B", "C", "D"),
 # calculate updates for all players
 UpdateGlicko2Periods(strengths, matches)
 ```
-
+Result is a `data.table` object with the history of Glicko-2 ratings for each player and period:
 ```
    player period           r           RD         sigma
 1:      A      0 1500.000000 200.00000000 0.06000000000
