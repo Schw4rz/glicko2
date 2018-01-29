@@ -22,6 +22,7 @@
 #'   \code{selected_player} strength with columns
 #'   \code{player, period, r, RD, sigma}.
 #' @import data.table
+#' @export
 UpdateGlicko2 <- function(selected_player, selected_period,
                                period_strengths, period_matches,
                                tau = 0.5, epsilon = 1e-6) {

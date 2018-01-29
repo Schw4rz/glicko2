@@ -27,7 +27,7 @@
 #'                        is_winner = c(1, 0, 0),
 #'                        period = c(1, 1, 2))
 #'
-#' UpdatePlayerRatingPeriods(data$strengths, data$matches)
+#' UpdateGlicko2Periods(data$strengths, data$matches)
 UpdateGlicko2Periods <- function(strengths, matches,
                                       max_period = max(matches$period),
                                       min_period = max(strengths$period) + 1,
