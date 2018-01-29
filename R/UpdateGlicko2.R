@@ -22,7 +22,7 @@
 #'   \code{selected_player} strength with columns
 #'   \code{player, period, r, RD, sigma}.
 #' @import data.table
-UpdatePlayerRating <- function(selected_player, selected_period,
+UpdateGlicko2 <- function(selected_player, selected_period,
                                period_strengths, period_matches,
                                tau = 0.5, epsilon = 1e-6) {
   # get matches and strength values for selected player

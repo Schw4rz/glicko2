@@ -28,7 +28,7 @@
 #'                        period = c(1, 1, 2))
 #'
 #' UpdatePlayerRatingPeriods(data$strengths, data$matches)
-UpdatePlayerRatingPeriods <- function(strengths, matches,
+UpdateGlicko2Periods <- function(strengths, matches,
                                       max_period = max(matches$period),
                                       min_period = max(strengths$period) + 1,
                                       tau = 0.5, epsilon = 1e-6) {
@@ -44,7 +44,7 @@ UpdatePlayerRatingPeriods <- function(strengths, matches,
     # update all players srengths within this period
     updated_strengths <-
       lapply(unique_players,
-             UpdatePlayerRating,
+             UpdateGlicko2,
              selected_period = selected_period,
              period_strengths = period_strengths,
              period_matches = period_matches,
