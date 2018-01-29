@@ -1,6 +1,6 @@
 context("Glicko-2 Functions")
 
-test_that("Glicko-2 update is correct", {
+test_that("Glicko-2 function is correct", {
   expect_equal(GetGlicko2Rating(1500, 200, 0.06,
                                 c(1400, 1550, 1700),
                                 c(30, 100, 300),
